@@ -6,32 +6,6 @@ import org.junit.jupiter.api.Test
 
 class LauncherTest {
     @Test
-    fun givenExpiredLaunchCodes_RocketIsNotLaunched_Spy() {
-        // arrange - 準備
-        val rocket = SpyRocket()
-
-        // act - 実行
-        Launcher.launchRocket(rocket, ExpiredLaunchCode())
-
-        // assert - 確認
-        assertFalse(rocket.launchWasCalled())
-        assertTrue(rocket.disableWasCalled())
-    }
-
-    @Test
-    fun givenUnsignedLaunchCodes_RocketIsNotLaunched_Spy() {
-        // arrange - 準備
-        val rocket = SpyRocket()
-
-        // act - 実行
-        Launcher.launchRocket(rocket, UnsignedLaunchCode())
-
-        // assert - 確認
-        assertFalse(rocket.launchWasCalled())
-        assertTrue(rocket.disableWasCalled())
-    }
-
-    @Test
     fun givenExpiredLaunchCodes_MissileIsNotLaunched_Mock() {
         val mockRocket = MockRocket()
 
@@ -52,13 +26,12 @@ class LauncherTest {
     @Test
     fun givenGoodLaunchCodes_RocketIsLaunched() {
         // arrange - 準備
-        val rocket = SpyRocket()
+        val mockRocket = MockRocket()
 
         // act - 実行
-        Launcher.launchRocket(rocket, GoodLaunchCode())
+        Launcher.launchRocket(mockRocket, GoodLaunchCode())
 
         // assert - 確認
-        assertTrue(rocket.launchWasCalled())
-        assertFalse(rocket.disableWasCalled())
+        mockRocket.verifyLaunch()
     }
 }

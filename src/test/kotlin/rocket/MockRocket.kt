@@ -19,4 +19,9 @@ class MockRocket: Rocket {
         assertFalse(launchWasCalled)
         assertTrue(disableWasCalled)
     }
+
+    fun verifyLaunch() {
+        assertTrue(launchWasCalled)
+        assertFalse(disableWasCalled)
+    }
 }
