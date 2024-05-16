@@ -1,6 +1,7 @@
 package rocket
 
 import org.junit.jupiter.api.Assertions.assertFalse
+import org.junit.jupiter.api.Assertions.assertTrue
 import org.junit.jupiter.api.Test
 
 class LauncherTest {
@@ -20,5 +21,17 @@ class LauncherTest {
 
         // assert - 確認
         assertFalse(rocket.launchWasCalled())
+    }
+
+    @Test
+    fun givenGoodLaunchCodes_RocketIsLaunched() {
+        // arrange - 準備
+        val rocket: SpyRocket = SpyRocket()
+
+        // act - 実行
+        Launcher.launchRocket(rocket, GoodLaunchCode())
+
+        // assert - 確認
+        assertTrue(rocket.launchWasCalled())
     }
 }
