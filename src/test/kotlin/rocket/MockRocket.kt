@@ -1,6 +1,9 @@
 package rocket
 
-class SpyRocket : Rocket {
+import org.junit.jupiter.api.Assertions.assertFalse
+import kotlin.test.assertTrue
+
+class MockRocket: Rocket {
     private var launchWasCalled = false
     private var disableWasCalled = false
 
@@ -12,11 +15,8 @@ class SpyRocket : Rocket {
         disableWasCalled = true
     }
 
-    fun launchWasCalled(): Boolean {
-        return launchWasCalled
-    }
-
-    fun disableWasCalled(): Boolean {
-        return disableWasCalled
+    fun verifyCodeRedAbort() {
+        assertFalse(launchWasCalled)
+        assertTrue(disableWasCalled)
     }
 }

@@ -1,11 +1,11 @@
 package rocket
 
-class GoodLaunchCode : LaunchCode {
+class UnsignedLaunchCode : LaunchCode {
     override fun isExpired(): Boolean {
         return false
     }
 
     override fun isSigned(): Boolean {
-        return true
+        return false
     }
 }
